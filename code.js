@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Observar solo los elementos que necesitan animación al scroll
     const scrollElements = document.querySelectorAll('.services__item, .team__member');
-    console.log('Elementos encontrados:', scrollElements.length); // Debug
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -85,4 +84,52 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
+});
+
+function easeOutQuad(t) {
+    return t * (2 - t); // Hace que la animación se desacelere al final
+}
+
+function animateCounter(element, target) {
+    let start = 0;
+    const duration = 2000;
+    const startTime = performance.now();
+
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutQuad(progress); // Aplica el easing
+        let currentValue = Math.floor(easedProgress * target);
+
+        if (element.getAttribute('data-target') === "70") {
+            element.textContent = progress < 1 ? currentValue : `+${target}`; // Agrega el "+"
+        } else {
+            element.textContent = currentValue;
+        }
+
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = element.getAttribute('data-target') === "70" ? `+${target}` : target;
+        }
+    }
+
+    requestAnimationFrame(updateCounter);
+}
+
+function startCounters(entries, observer) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const counter = entry.target;
+            const target = parseInt(counter.getAttribute('data-target'));
+            animateCounter(counter, target);
+            observer.unobserve(counter); // Evitar que la animación se repita
+        }
+    });
+}
+
+const observer = new IntersectionObserver(startCounters, { threshold: 0.5 });
+
+document.querySelectorAll('.stat__number').forEach(counter => {
+    observer.observe(counter);
 });

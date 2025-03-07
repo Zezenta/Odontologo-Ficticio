@@ -276,18 +276,59 @@ body {
 
 .about {
     display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 20px;
     width: 70%;
-    height: 300px;
     margin: 0 auto;
+}
+
+.about__stats {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 40px;
+    gap: 20px;
+}
+
+.stat__item {
+    text-align: center;
+    flex: 1;
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat__number {
+    font-size: 3em;
+    font-weight: bold;
+    color: #008b8b;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.stat__text {
+    font-size: 1.2em;
+    color: #333;
+    text-align: center;
+    max-width: 180px;
+    margin: 0 auto;
+}
+
+.about__content-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 300px;
 }
 
 .about__image-placeholder {
     background-color: #d3d3d3;
     width: 50%;
     height: 100%;
-    background-image: url('https://zezenta.shop/placeholders/SHARE/odontologo-ficticio/clinica.jpg'); /* Add your image URL here */
+    background-image: url('https://zezenta.shop/placeholders/SHARE/odontologo-ficticio/clinica.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -295,6 +336,19 @@ body {
 .about__content {
     width: 70%;
     padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about__text{
+    text-align: justify;
+    margin: 0;
+}
+
+.about__title{
+    text-align: start;
+    margin: 0;
 }
 
 @keyframes slide-in-left {
@@ -446,16 +500,34 @@ body {
     
     /* Sobre Nosotros */
     .about {
-        flex-direction: column;
-        height: auto;
         width: 90%;
     }
-    
+
+    .about__stats {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .stat__item {
+        margin-bottom: 20px;
+        max-width: 100%;
+    }
+
+    .stat__text {
+        max-width: 100%;
+    }
+
+    .about__content-wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+
     .about__image-placeholder {
         width: 100%;
         height: 250px;
     }
-    
+
     .about__content {
         width: 100%;
         padding: 20px 0;
@@ -512,6 +584,14 @@ body {
     
     .contact__info {
         font-size: 0.9em;
+    }
+
+    .stat__number {
+        font-size: 2.5em;
+    }
+
+    .stat__text {
+        font-size: 1em;
     }
 }
 
