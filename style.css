@@ -1,0 +1,517 @@
+/* Estilos generales */
+html {
+    max-width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Poppins, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    max-width: 100%;
+    position: relative;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #008b8b;
+    padding: 25px;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.menu-toggle {
+    display: none;  /* Ocultar por defecto */
+}
+
+.header__menu {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.header__link {
+    text-decoration: none;
+    color: white;
+}
+
+/* Hero */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60vh;
+    text-align: center;
+    background-color: #2a9d8f;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://zezenta.shop/placeholders/SHARE/odontologo-ficticio/dentistchair.jpg'); /* Add your image URL here */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 0 0 50px 0;
+}
+
+.hero__title, .hero__subtitle, .services__item, .team__member {
+    opacity: 0;
+    transform: translateX(50%);
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    will-change: transform, opacity;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.animate {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+.hero__title {
+    font-size: 3em;
+    margin-top: 0;
+}
+
+.hero__subtitle {
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.title {
+    font-size: 2em;
+    margin-top: 0;
+}
+
+/* Servicios */
+.services {
+    text-align: center;
+    padding: 20px;
+}
+
+.services__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+    padding: 0 15%;
+}
+
+.services__item {
+    background-color: #00ced1;
+    width: 250px;
+    height: 300px;
+    padding: 15px;
+    border-radius: 5px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1.3em;
+    margin-top: 5px;
+}
+
+.services__item::before {
+    content: '';
+    display: block;
+    background-color: #d3d3d3;
+    min-height: 50%;
+    width: 100%;
+    margin-bottom: 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+.services__description {
+    font-size: 0.8em;
+    color: #333;
+}
+
+.service-preventive::before {
+    background-image: url('https://zezenta.shop/placeholders/SHARE/odontologo-ficticio/service1.webp'); /* Add your image URL here for Cuidado Preventivo */
+}
+
+.service-cosmetic::before {
+    background-image: url('https://zezenta.shop/placeholders/SHARE/odontologo-ficticio/service2.webp'); /* Add your image URL here for Odontología Cosmética */
+}
+
+.service-reconstructive::before {
+    background-image: url('https://zezenta.shop/placeholders/SHARE/odontologo-ficticio/service3.jpg'); /* Add your image URL here for Odontología Reconstructiva */
+}
+
+.service-orthodontics::before {
+    background-image: url('https://zezenta.shop/placeholders/SHARE/odontologo-ficticio/service4.jpg'); /* Add your image URL here for Ortodoncia */
+}
+
+.service-emergency::before {
+    background-image: url('https://zezenta.shop/placeholders/SHARE/odontologo-ficticio/service5.jpg'); /* Add your image URL here for Cuidados de emergencia */
+}
+
+.service-pediatric::before {
+    background-image: url('https://zezenta.shop/placeholders/SHARE/odontologo-ficticio/service6.jpg'); /* Add your image URL here for Cuidados Pediátricos */
+}
+
+/* Testimonios */
+.testimonials {
+    background-color: #2a9d8f;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.testimonials__container {
+    padding-bottom: 20px;
+}
+
+.testimonials__text {
+    font-size: 1.5em;
+    font-style: italic;
+}
+
+.testimonials__author {
+    font-size: 1em;
+}
+
+/* Equipo */
+.team {
+    text-align: center;
+    padding: 20px;
+}
+
+.team__list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.team__member {
+    background-color: #f0f0f0;
+    width: 200px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.team__member::before {
+    content: '';
+    display: block;
+    background-color: #d3d3d3;
+    height: 50%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.team__name {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 5px 0 0 0;
+    padding: 0 10px;
+}
+
+.team__description {
+    font-size: 0.9em;
+    color: #333;
+    padding: 0 10px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.team__member.dr-zambrano::before {
+    background-image: url('https://zezenta.shop/placeholders/SHARE/odontologo-ficticio/dr1.jpg'); /* Add your image URL here for Dr. Zambrano */
+}
+
+.team__member.dr-hernandez::before {
+    background-image: url('https://zezenta.shop/placeholders/SHARE/odontologo-ficticio/dr2.jpg'); /* Add your image URL here for Dr. Hernández */
+}
+
+.team__member.dr-mendoza::before {
+    background-image: url('https://zezenta.shop/placeholders/SHARE/odontologo-ficticio/dr3.jpg'); /* Add your image URL here for Dr. Mendoza */
+}
+
+/* Contacto */
+.contact {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    height: 400px;
+}
+
+.contact__section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact__info-block {
+    flex: 1;
+}
+
+.contact__map {
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.contact__map iframe {
+    width: 100%;
+    height: 250px;
+    border: 0;
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    width: 70%;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.about__image-placeholder {
+    background-color: #d3d3d3;
+    width: 50%;
+    height: 100%;
+    background-image: url('https://zezenta.shop/placeholders/SHARE/odontologo-ficticio/clinica.jpg'); /* Add your image URL here */
+    background-size: cover;
+    background-position: center;
+}
+
+.about__content {
+    width: 70%;
+    padding: 0 20px;
+}
+
+@keyframes slide-in-left {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-right {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Media Queries para Responsividad */
+@media screen and (max-width: 1024px) {
+    .services__list {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 10%;
+    }
+    
+    .about {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Header */
+    .header {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .header__nav {
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+    }
+    
+    .header__menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .header__menu.open {
+        height: auto;
+    }
+    
+    .header__menu.open + .header__nav {
+        height: auto;
+    }
+    
+    .header__item {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        margin: 0;
+    }
+    
+    .header__logo {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        padding: 10px 0;
+    }
+    
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5em;
+    }
+    
+    .header__menu {
+        max-height: 0;
+        transition: max-height 0.3s ease-out;
+        overflow: hidden;
+    }
+    
+    .header__menu.open {
+        max-height: 500px;
+    }
+    
+    /* Hero */
+    .hero {
+        height: 50vh;
+    }
+    
+    .hero__title, .hero__subtitle, .services__item, .team__member {
+        transform: translateX(20px);
+        transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    }
+    
+    .hero__title {
+        font-size: 2.5em;
+    }
+    
+    .hero__subtitle {
+        font-size: 1.2em;
+    }
+    
+    /* Servicios */
+    .services__list {
+        grid-template-columns: 1fr;
+        padding: 0 5%;
+    }
+    
+    .services__item {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    
+    /* Testimonios */
+    .testimonials {
+        height: auto;
+        padding: 20px 10px;
+    }
+    
+    .testimonials__text {
+        font-size: 1.2em;
+    }
+    
+    /* Equipo */
+    .team__list {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .team__member {
+        width: 80%;
+        max-width: 300px;
+    }
+    
+    /* Sobre Nosotros */
+    .about {
+        flex-direction: column;
+        height: auto;
+        width: 90%;
+    }
+    
+    .about__image-placeholder {
+        width: 100%;
+        height: 250px;
+    }
+    
+    .about__content {
+        width: 100%;
+        padding: 20px 0;
+    }
+    
+    /* Contacto */
+    .contact {
+        flex-direction: column !important;
+        height: auto !important;
+    }
+    
+    .contact iframe {
+        width: 100% !important;
+        height: 250px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Header */
+    .header__item {
+        font-size: 0.9em;
+    }
+    
+    /* Hero */
+    .hero__title {
+        font-size: 2em;
+        padding: 0 10px;
+    }
+    
+    .hero__subtitle {
+        font-size: 1em;
+        padding: 0 10px;
+    }
+    
+    /* Servicios */
+    .title {
+        font-size: 1.5em;
+    }
+    
+    .services__item {
+        height: 280px;
+    }
+    
+    /* Testimonios */
+    .testimonials__text {
+        font-size: 1em;
+    }
+    
+    /* Contacto */
+    .contact svg {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .contact__info {
+        font-size: 0.9em;
+    }
+}
+
