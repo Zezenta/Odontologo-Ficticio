@@ -1,5 +1,29 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const hero = document.querySelector('.hero');
+    const offset = -100; // Mismo offset para ambos
+
+    function applyParallax() {
+        hero.style.backgroundSize = window.innerWidth > 768 ? 'cover' : 'auto 130%';
+        hero.style.backgroundPosition = `center ${offset}px`;
+    }
+
+    // Initial application
+    applyParallax();
+
+    // Apply on scroll for all devices
+    window.addEventListener('scroll', function () {
+        let scrollPosition = window.scrollY;
+        // Usar el mismo cálculo para desktop y mobile
+        hero.style.backgroundPosition = `center ${offset + scrollPosition * 0.5}px`;
+    });
+
+    // Reapply on resize
+    window.addEventListener('resize', applyParallax);
+});
+
+
 document.addEventListener("DOMContentLoaded", () => {
-    // Activar inmediatamente la animación del hero
+    // Immediately activate hero animation
     const heroElements = document.querySelectorAll('.hero__title, .hero__subtitle');
     heroElements.forEach(element => {
         element.classList.add('animate');
@@ -45,12 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setInterval(changeTestimonial, 5000);
 
-    // Observar solo los elementos que necesitan animación al scroll
+    // Observe only elements that need scroll animation
     const scrollElements = document.querySelectorAll('.services__item, .team__member');
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            //console.log('Elemento intersectando:', entry.target.className, entry.isIntersecting); // Debug
+            //console.log('Element intersecting:', entry.target.className, entry.isIntersecting); // Debug
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate');
                 observer.unobserve(entry.target);
@@ -63,10 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     scrollElements.forEach(element => {
         observer.observe(element);
-        //console.log('Observando elemento:', element.className); // Debug
+        //console.log('Observing element:', element.className); // Debug
     });
 
-    // Funcionalidad del menú móvil
+    // Mobile menu functionality
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     const headerNav = document.querySelector('.header__nav');
@@ -87,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function easeOutQuad(t) {
-    return t * (2 - t); // Hace que la animación se desacelere al final
+    return t * (2 - t); // Makes the animation decelerate at the end
 }
 
 function animateCounter(element, target) {
@@ -98,11 +122,11 @@ function animateCounter(element, target) {
     function updateCounter(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const easedProgress = easeOutQuad(progress); // Aplica el easing
+        const easedProgress = easeOutQuad(progress); // Apply easing
         let currentValue = Math.floor(easedProgress * target);
 
         if (element.getAttribute('data-target') === "70") {
-            element.textContent = progress < 1 ? currentValue : `+${target}`; // Agrega el "+"
+            element.textContent = progress < 1 ? currentValue : `+${target}`; // Add the "+"
         } else {
             element.textContent = currentValue;
         }
@@ -123,7 +147,7 @@ function startCounters(entries, observer) {
             const counter = entry.target;
             const target = parseInt(counter.getAttribute('data-target'));
             animateCounter(counter, target);
-            observer.unobserve(counter); // Evitar que la animación se repita
+            observer.unobserve(counter); // Prevent animation from repeating
         }
     });
 }
